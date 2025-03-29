@@ -1,399 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kitchen Art provides expert granite, marble, and quartz installation services in Sacramento and nearby areas." />
   <title>Kitchen Art</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Roboto', sans-serif;
       background: #f5f5f5;
       color: #333;
-      line-height: 1.6;
+      margin: 0;
+      padding: 0;
     }
-    header {
-  height: 90vh;
-  padding: 0;
-  margin: 0;
-  position: relative;
-}
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 0;
+    .top-bar {
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
-    header h1,
-    header p {
-      position: relative;
-      z-index: 1;
-      color: white;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    header h1 {
-      font-size: 3.5em;
+    .top-bar-left img {
+      height: 55px;
+    }
+    .top-bar-left div {
+      display: flex;
+      flex-direction: column;
+    }
+    .top-bar-left strong {
+      font-size: 1.2em;
+      color: #2c3e50;
+    }
+    .top-bar-left span {
+      font-size: 0.9em;
+      color: #777;
+    }
+    .top-bar a {
+      background: #f1c40f;
+      color: #111;
+      padding: 10px 18px;
+      border-radius: 30px;
+      text-decoration: none;
       font-weight: bold;
-      margin-bottom: 10px;
-      
-    }
-    header p {
-      font-size: 1.5em;
-      font-weight: 300;
+      font-size: 0.95em;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     nav {
       background: #111;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      padding: 15px 10px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      padding: 15px;
+      text-align: center;
     }
     nav a {
       color: white;
+      margin: 0 12px;
       text-decoration: none;
-      font-weight: 700;
-      padding: 10px 15px;
-      transition: background 0.3s;
-      border-radius: 8px;
+      font-weight: bold;
     }
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.2);
+    .slider {
+      position: relative;
+      height: 550px;
+      overflow: hidden;
     }
-    section {
-      padding: 60px 20px;
+    .slider img {
+      width: 100%;
+      height: 550px;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      animation: fade 30s infinite;
+    }
+    .slider img:nth-child(1) { animation-delay: 0s; }
+    .slider img:nth-child(2) { animation-delay: 5s; }
+    .slider img:nth-child(3) { animation-delay: 10s; }
+    .slider img:nth-child(4) { animation-delay: 15s; }
+    .slider img:nth-child(5) { animation-delay: 20s; }
+    .slider img:nth-child(6) { animation-delay: 25s; }
+    @keyframes fade {
+      0%, 100% { opacity: 0; }
+      5%, 20% { opacity: 1; }
+      25% { opacity: 0; }
+    }
+    .slider-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-shadow: 3px 3px 12px rgba(0, 0, 0, 1);
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px 30px;
+      border-radius: 12px;
+    }
+    .slider-text h1 { font-size: 3.5em; margin-bottom: 10px; }
+    .slider-text p { font-size: 1.3em; }
+    .section {
       max-width: 1100px;
       margin: auto;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
+      padding: 60px 20px;
     }
-    h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      color: #2d3436;
-    }
-    .services ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .services ul li {
-      background: #dfe6e9;
-      margin-bottom: 10px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .gallery {
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
+      padding: 20px;
     }
-    .gallery img {
+    .gallery-grid img {
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      border-radius: 8px;
+      cursor: pointer;
       transition: transform 0.3s ease;
     }
-    .gallery img:hover {
-      transform: scale(1.03);
+    .gallery-grid img:hover {
+      transform: scale(1.05);
     }
-    #contact p {
-      margin: 10px 0;
+    .section-with-image {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
     }
-    a {
-      color: #6c5ce7;
+    .section-with-image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .section-with-image .text {
+      flex: 1;
+    }
+    .appointment-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     footer {
-      background-color: #111;
+      background: #111;
       color: white;
       text-align: center;
       padding: 30px 20px;
       margin-top: 60px;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
     }
-      .slider {
-      position: relative;
-      height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-start;
-      padding: 60px;
-      background-size: cover;
-      background-position: center;
-      animation: slideShow 45s infinite ease-in-out;
-      color: white;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-    }
-
-    @keyframes slideShow {
-  0% { background-image: url('1.jpg'); }
-  6% { background-image: url('2.jpg'); }
-  12% { background-image: url('3.jpg'); }
-  18% { background-image: url('4.jpg'); }
-  24% { background-image: url('5.jpg'); }
-  30% { background-image: url('6.jpg'); }
-  36% { background-image: url('7.jpg'); }
-  42% { background-image: url('8.jpg'); }
-  48% { background-image: url('9.jpg'); }
-  54% { background-image: url('10.jpg'); }
-  60% { background-image: url('11.jpg'); }
-  66% { background-image: url('12.jpg'); }
-  72% { background-image: url('13.jpg'); }
-  78% { background-image: url('14.jpg'); }
-  84% { background-image: url('15.jpg'); }
-  90% { background-image: url('16.jpg'); }
-  96% { background-image: url('17.jpg'); }
-  100% { background-image: url('1.jpg'); }
-}
-  6% { background-image: url('2.jpg'); }
-  12% { background-image: url('3.jpg'); }
-  18% { background-image: url('4.jpg'); }
-  24% { background-image: url('5.jpg'); }
-  30% { background-image: url('6.jpg'); }
-  36% { background-image: url('7.jpg'); }
-  42% { background-image: url('8.jpg'); }
-  48% { background-image: url('9.jpg'); }
-  54% { background-image: url('10.jpg'); }
-  60% { background-image: url('11.jpg'); }
-  66% { background-image: url('12.jpg'); }
-  72% { background-image: url('13.jpg'); }
-  78% { background-image: url('14.jpg'); }
-  84% { background-image: url('15.jpg'); }
-  90% { background-image: url('16.jpg'); }
-  96% { background-image: url('17.jpg'); }
-  100% { background-image: url('1.jpg'); }
-}
-  33% { background-image: url('Feb-10-2025-2735 Rattlesnake Rd-7.jpg'); }
-  66% { background-image: url('Feb-10-2025-2735 Rattlesnake Rd-8.jpg'); }
-  100% { background-image: url('image1.jpg'); }
-}
-}
-      33%  { background-image: url('image111.jpg'); }
-      66%  { background-image: url('image1.jpg'); }
-      100% { background-image: url('image123.jpg'); }
-    }  
-
-    .services div:hover {
-      transform: translateY(-5px);
-      background-color: #ffffff;
-      color: #111;
-    }
-
-    .gallery img {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    button:hover {
-      background-color: #333;
-    }
-
-    input, textarea {
-      font-size: 1em;
-    }
-
-    ::placeholder {
-      color: #999;
-    }
-
-    .slider h1, .slider p {
-      animation: fadeIn 2s ease forwards;
-      opacity: 0;
-    }
-
-    .slider h1 {
-      animation-delay: 0.5s;
-    }
-
-    .slider p {
-      animation-delay: 1.2s;
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-      body {
-      scroll-behavior: smooth;
-    }
-
-    .gallery img {
-      border: 5px solid #fff;
-    }
-
-    .gallery {
-      background: #f9f9f9;
-      padding: 20px;
-      border-radius: 12px;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.08);
-    }
-
-    .services div {
-      background: linear-gradient(to bottom right, #ffffff, #f0f0f0);
-    }
-
-    form input, form textarea {
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    form button {
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-    form button:hover {
-      transform: scale(1.03);
-    }
-
-    nav {
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    section#about, section#contact, section#careers {
-      background: #fbfbfb;
-    }
-
-    section h2::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: #6c5ce7;
-      margin-top: 10px;
-      border-radius: 2px;
-    }
-
-    ::selection {
-      background: #6c5ce7;
-      color: white;
+  
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
   </style>
+
 </head>
 <body>
-  <header>
-    <div class="slider">
-      <h1>Kitchen Art</h1>
-      <p>Professional Granite, Marble & Quartz Installation in Sacramento</p>
-    </div>
-  </header>
   
-
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <img src="logo.jpg" alt="Kitchen Art Logo">
+      <div>
+        <strong>Kitchen Art</strong>
+        <span>6200 Warehouse Way, Sacramento, CA</span>
+      </div>
+    </div>
+    <a href="tel:+19165089504">📞 Call (916) 508-9504</a>
+  </div>
   <nav>
-    <a href="#appointment">Appointment</a>
-    <a href="#careers">Careers</a>
-<a href="#services">Services</a>
+    <a href="#services">Services</a>
     <a href="#gallery">Gallery</a>
     <a href="#about">About</a>
+    <a href="#appointment">Estimate</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <section id="services" class="services">
-  <h2>Our Services</h2>
-  <p style="margin-bottom: 20px; color: #555; font-size: 1.1em;">
-    We provide expert craftsmanship and premium materials for kitchens, bathrooms, and custom projects. Explore what we offer:
+  <header>
+    <div class="slider">
+      <img src="1.jpg" alt="Slide 1" />
+      <img src="2.jpg" alt="Slide 2" />
+      <img src="3.jpg" alt="Slide 3" />
+      <img src="4.jpg" alt="Slide 4" />
+      <img src="5.jpg" alt="Slide 5" />
+      <img src="6.jpg" alt="Slide 6" />
+      <div class="slider-text">
+        <h1>Kitchen Art</h1>
+        <p>Professional Granite, Marble & Quartz Installation in Sacramento</p>
+      </div>
+    </div>
+  </header>
+
+  <section id="services" class="section section-with-image" style="background: #ffffff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); padding: 60px 20px;">
+  <img src="18.jpg" alt="Granite Installation" style="border-radius: 12px; max-height: 400px; object-fit: cover;">
+  <div class="text">
+    <h2 style="font-size: 2.4em; color: #2c3e50; margin-bottom: 15px;">Our Services</h2>
+    <p style="font-size: 1.1em; color: #555; margin-bottom: 25px;">
+      We provide expert craftsmanship and premium materials for kitchens, bathrooms, and custom projects.
+    </p>
+    <ul style="line-height: 1.8; font-size: 1em; color: #444; padding-left: 20px;">
+      <li><strong>Granite Installation</strong> – Elegant & durable countertops</li>
+      <li><strong>Marble Installation</strong> – Timeless luxury and charm</li>
+      <li><strong>Quartz Installation</strong> – Low maintenance & modern appeal</li>
+      <li><strong>Countertop Fabrication</strong> – Custom designs for every home</li>
+      <li><strong>Tile Installation</strong> – Expert flooring & wall finishes</li>
+      <li><strong>Backsplash Work</strong> – Beautiful & functional accents</li>
+    </ul>
+  </div>
+</section>
+
+  <section id="gallery" class="section" style="background: #ffffff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); padding: 60px 20px;">
+  <h2 style="text-align: center; font-size: 2.4em; color: #2c3e50; margin-bottom: 30px;">Our Work</h2>
+  <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; font-size: 1.1em; color: #555;">
+    Explore a selection of our finest granite, marble, and quartz installation projects. Click on any image to view it larger.
   </p>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-    <div style="background: #ecf0f1; padding: 20px; border-radius: 12px; text-align: center; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease;">
-      <span>Granite Installation</span>
+  <div class="gallery-grid">
+    <a href="1.jpg" data-lightbox="work-gallery"><img src="1.jpg" alt="Work 1"></a>
+    <a href="2.jpg" data-lightbox="work-gallery"><img src="2.jpg" alt="Work 2"></a>
+    <a href="3.jpg" data-lightbox="work-gallery"><img src="3.jpg" alt="Work 3"></a>
+    <a href="4.jpg" data-lightbox="work-gallery"><img src="4.jpg" alt="Work 4"></a>
+    <a href="5.jpg" data-lightbox="work-gallery"><img src="5.jpg" alt="Work 5"></a>
+    <a href="6.jpg" data-lightbox="work-gallery"><img src="6.jpg" alt="Work 6"></a>
+    <a href="7.jpg" data-lightbox="work-gallery"><img src="7.jpg" alt="Work 7"></a>
+    <a href="8.jpg" data-lightbox="work-gallery"><img src="8.jpg" alt="Work 8"></a>
+    <a href="9.jpg" data-lightbox="work-gallery"><img src="9.jpg" alt="Work 9"></a>
+    <a href="10.jpg" data-lightbox="work-gallery"><img src="10.jpg" alt="Work 10"></a>
+  </div>
+</section>
+
+  <section id="about" class="section" style="background: #ffffff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); padding: 60px 20px; margin-bottom: 40px;">
+  <div style="text-align: center;">
+    <h2 style="font-size: 2.4em; color: #2c3e50; margin-bottom: 20px;">About Kitchen Art</h2>
+    <p style="font-size: 1.1em; color: #555; max-width: 800px; margin: 0 auto; line-height: 1.7;">
+      Kitchen Art is a <strong>family-owned</strong> business proudly serving Sacramento and surrounding areas. With over a decade of experience, we specialize in the custom installation of <strong>granite, marble, and quartz</strong> surfaces for kitchens, bathrooms, and commercial projects.<br><br>
+      Our dedicated team delivers exceptional craftsmanship, honest communication, and personalized service. Whether you're renovating or building new, Kitchen Art is committed to transforming your space with elegance and durability.
+    </p>
+  </div>
+</section>
+
+  <section id="reviews" class="section">
+  <h2 style="text-align: center; font-size: 2.2em; color: #2c3e50;">Customer Reviews</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 30px;">
+    <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); max-width: 320px;">
+      <img src="review1.jpg" alt="Jessica" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+      <p style="font-style: italic; margin-top: 10px;">"Absolutely stunning granite work! Our kitchen looks brand new. Highly recommend Kitchen Art!"</p>
+      <div style="color: #f39c12; margin: 5px 0;">★★★★★</div>
+      
     </div>
-    <div style="background: #ecf0f1; padding: 20px; border-radius: 12px; text-align: center; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease;">
-      <span>Marble Installation</span>
+    <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); max-width: 320px;">
+      <img src="review2.jpg" alt="Mark" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+      <p style="font-style: italic; margin-top: 10px;">"Very professional and fast service. The quartz countertops are beautiful. Great communication throughout!"</p>
+      <div style="color: #f39c12; margin: 5px 0;">★★★★★</div>
+      
     </div>
-    <div style="background: #ecf0f1; padding: 20px; border-radius: 12px; text-align: center; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease;">
-      <span>Quartz Installation</span>
-    </div>
-    <div style="background: #ecf0f1; padding: 20px; border-radius: 12px; text-align: center; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease;">
-      <span>Countertop Fabrication</span>
-    </div>
-    <div style="background: #ecf0f1; padding: 20px; border-radius: 12px; text-align: center; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease;">
-      <span>Tile Installation</span>
-    </div>
-    <div style="background: #ecf0f1; padding: 20px; border-radius: 12px; text-align: center; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease;">
-      <span>Backsplash Work</span>
+    <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); max-width: 320px;">
+      <img src="review3.jpg" alt="Linda" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+      <p style="font-style: italic; margin-top: 10px;">"Excellent craftsmanship and great pricing. The backsplash work completed our kitchen perfectly."</p>
+      <div style="color: #f39c12; margin: 5px 0;">★★★★★</div>
+      
     </div>
   </div>
 </section>
 
-  <section id="gallery">
-    <h2>Our Work</h2>
-    <div class="gallery">
-      <img src="1.jpg" alt="Granite Work 1">
-      <img src="2.jpg" alt="Granite Work 2">
-      <img src="3.jpg" alt="Granite Work 3">
-      <img src="4.jpg" alt="Granite Work 4">
-      <img src="5.jpg" alt="Granite Work 5">
-      <img src="6.jpg" alt="Granite Work 6">
-      <img src="7.jpg" alt="Granite Work 7">
-      <img src="8.jpg" alt="Granite Work 8">
-      <img src="9.jpg" alt="Granite Work 9">
-      <img src="10.jpg" alt="Granite Work 10">
-      <img src="11.jpg" alt="Granite Work 11">
-      <img src="12.jpg" alt="Granite Work 12">
-      <img src="13.jpg" alt="Granite Work 13">
-      <img src="14.jpg" alt="Granite Work 14">
-      <img src="15.jpg" alt="Granite Work 15">
-      <img src="16.jpg" alt="Granite Work 16">
-      <img src="17.jpg" alt="Granite Work 17">
+  <section id="areas" class="section">
+  <h2 style="text-align: center; font-size: 2.2em; color: #2c3e50;">Areas We Serve</h2>
+  <p style="text-align: center; max-width: 700px; margin: 0 auto 20px; font-size: 1.1em; color: #555;">
+    We proudly serve Sacramento and surrounding communities with top-tier countertop services. If you're near us — you're covered.
+  </p>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px;">
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 Sacramento</span>
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 Roseville</span>
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 Rocklin</span>
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 Lincoln</span>
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 Folsom</span>
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 Elk Grove</span>
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 Citrus Heights</span>
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 Rancho Cordova</span>
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 Carmichael</span>
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 Fair Oaks</span>
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 El Dorado Hills</span>
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 Antelope</span>
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 Orangevale</span>
+    <span style="background: #e7f3ff; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">📍 Loomis</span>
+  </div>
+</section>
+
+  <section id="appointment" class="section">
+    <div class="appointment-box">
+      <h2>Get an Estimate or Appointment</h2>
+      <p>For a free estimate or to schedule an appointment, please call us or send an email:</p>
+      <p><strong>Phone:</strong> <a href="tel:+19165089504">(916) 508-9504</a></p>
+      <p><strong>Email:</strong> <a href="mailto:norcalgranite@att.net">norcalgranite@att.net</a></p>
     </div>
   </section>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>Kitchen Art is a family-owned business proudly serving Sacramento and surrounding areas. With years of experience, we specialize in custom installation of granite, marble, and quartz surfaces for kitchens, bathrooms, and more.</p>
-  </section>
-
-  <section id="appointment">
-    <h2>Book an Appointment</h2>
-    <p>Let us know what kind of project you’re planning, and we’ll reach out to schedule a free consultation.</p>
-    <form style="display: flex; flex-direction: column; gap: 15px; max-width: 600px;">
-      <input type="text" placeholder="Your Name" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
-      <input type="email" placeholder="Your Email" required style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
-      <input type="tel" placeholder="Phone Number" style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
-      <textarea placeholder="Tell us about your project..." rows="5" style="padding: 12px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
-      <button type="submit" style="padding: 12px; background-color: #111; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Submit</button>
-    </form>
-  </section>
-
-  <section id="careers">
-    <h2>Careers</h2>
-    <p>Join our growing team of experienced granite and marble professionals! We're currently hiring for the following roles:</p>
-    <ul style="padding-left: 20px; list-style: disc;">
-      <li>Granite Fabricator</li>
-      <li>Installation Specialist</li>
-      <li>Sales Associate</li>
-      <li>Customer Support</li>
-    </ul>
-    <p>If you're interested in any position, please email your resume to <a href="mailto:careers@kitchenart.com">careers@kitchenart.com</a>.</p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
+  <section id="contact" class="section">
+    <h2 style="font-size: 2em; color: #2c3e50;">Contact Us</h2>
     <p><strong>Address:</strong> 6200 Warehouse Way, Sacramento, CA</p>
-    <p><strong>Phone:</strong> (916) 600-5036</p>
-    <p><strong>Email:</strong> info@norcalgranite.com</p>
-    <p><a href="https://www.google.com/maps?q=6200+Warehouse+Way,+Sacramento,+CA" target="_blank">View on Google Maps</a></p>
+    <p><strong>Phone:</strong> (916) 508-9504</p>
+    <p><strong>Email:</strong> norcalgranite@att.net</p>
+    <p>
+      <a href="https://www.google.com/maps?q=6200+Warehouse+Way,+Sacramento,+CA" target="_blank">View on Google Maps</a> |
+      <a href="http://maps.apple.com/?q=6200+Warehouse+Way,+Sacramento,+CA" target="_blank">Open in Apple Maps</a>
+    </p>
   </section>
 
   <footer>
     <p>&copy; 2025 Kitchen Art. All rights reserved.</p>
   </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+  <script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'fadeDuration': 300,
+      'imageFadeDuration': 300,
+      'showImageNumberLabel': true
+    });
+  </script>
 </body>
 </html>
