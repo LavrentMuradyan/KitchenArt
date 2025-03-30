@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kitchen Art | Full Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .gallery {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    .gallery h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #111;
+      color: white;
+      margin-top: 40px;
+    }
+    a.back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #f1c40f;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Full Project Gallery</h1>
+	<h2>Kitchen Art lnc.</h2>
+    <p><a class="back-link" href="index.html">← Back to Home</a></p>
+  </header>
+
+  <div class="gallery">
+    <h1>More of Our Work</h1>
+    <div class="gallery-grid">
+      <a href="11.jpg" data-lightbox="full-gallery"><img src="11.jpg" alt="Work 11"></a>
+      <a href="12.jpg" data-lightbox="full-gallery"><img src="12.jpg" alt="Work 12"></a>
+      <a href="13.jpg" data-lightbox="full-gallery"><img src="13.jpg" alt="Work 13"></a>
+      <a href="14.jpg" data-lightbox="full-gallery"><img src="14.jpg" alt="Work 14"></a>
+      <a href="15.jpg" data-lightbox="full-gallery"><img src="15.jpg" alt="Work 15"></a>
+      <a href="16.jpg" data-lightbox="full-gallery"><img src="16.jpg" alt="Work 16"></a>
+      <a href="17.jpg" data-lightbox="full-gallery"><img src="17.jpg" alt="Work 17"></a>
+      <a href="18.jpg" data-lightbox="full-gallery"><img src="18.jpg" alt="Work 18"></a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Kitchen Art lnc. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+</body>
+</html>

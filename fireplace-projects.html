@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fireplace Projects | Kitchen Art</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      color: #333;
+    }
+    header {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+    p.desc {
+      text-align: center;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-size: 1.1em;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #111;
+      color: white;
+    }
+    a.back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #e67e22;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fireplace Projects</h1>
+    <p><a class="back-link" href="index.html">← Back to Home</a></p>
+  </header>
+
+  <div class="container">
+    <p class="desc">Browse our custom stone fireplace installations, designed to bring warmth and elegance to your living spaces.</p>
+    <div class="gallery-grid">
+      <a href="fireplace1.jpg" data-lightbox="fireplace"><img src="fireplace1.jpg" alt="Fireplace Project 1"></a>
+      <a href="fireplace2.jpg" data-lightbox="fireplace"><img src="fireplace2.jpg" alt="Fireplace Project 2"></a>
+      <a href="fireplace3.jpg" data-lightbox="fireplace"><img src="fireplace3.jpg" alt="Fireplace Project 3"></a>
+      <a href="fireplace4.jpg" data-lightbox="fireplace"><img src="fireplace4.jpg" alt="Fireplace Project 4"></a>
+      <a href="fireplace5.jpg" data-lightbox="fireplace"><img src="fireplace5.jpg" alt="Fireplace Project 5"></a>
+      <a href="fireplace6.jpg" data-lightbox="fireplace"><img src="fireplace6.jpg" alt="Fireplace Project 6"></a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Kitchen Art lnc. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+</body>
+</html>
